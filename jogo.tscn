@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bqp0hrxloie2a"]
+
+[ext_resource type="Script" uid="uid://c4b3kowcflu0v" path="res://jogo.gd" id="1_yq54j"]
+[ext_resource type="Texture2D" uid="uid://d2mves3iqyvpt" path="res://recursos/background.png" id="2_1ap6j"]
+[ext_resource type="Texture2D" uid="uid://c2r8bi4toj8c4" path="res://recursos/foreground.png" id="3_qn35j"]
+[ext_resource type="Texture2D" uid="uid://dnqbhcwos2t5o" path="res://recursos/middleground2.png" id="4_qn35j"]
+[ext_resource type="Texture2D" uid="uid://qdk8oqqq4358" path="res://recursos/middleground1.png" id="5_8c340"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c340"]
+size = Vector2(1170, 107.5)
+
+[node name="jogo" type="Node2D" unique_id=1243322479]
+script = ExtResource("1_yq54j")
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=631997201]
+position = Vector2(6.1035156e-05, 0)
+scale = Vector2(3.659375, 3.7222223)
+texture = ExtResource("2_1ap6j")
+centered = false
+
+[node name="Fundo2" type="Sprite2D" parent="." unique_id=688403037]
+position = Vector2(1171, 0)
+scale = Vector2(3.653125, 3.741667)
+texture = ExtResource("2_1ap6j")
+centered = false
+
+[node name="Chao" type="Sprite2D" parent="." unique_id=940029658]
+position = Vector2(0, 514.00006)
+scale = Vector2(3.6671875, 3.546875)
+texture = ExtResource("3_qn35j")
+centered = false
+
+[node name="Chao2" type="Sprite2D" parent="." unique_id=2046551639]
+position = Vector2(1171.0001, 514)
+scale = Vector2(3.6523442, 3.5468755)
+texture = ExtResource("3_qn35j")
+centered = false
+
+[node name="chaofisico" type="StaticBody2D" parent="." unique_id=141972746]
+
+[node name="corpochao" type="CollisionShape2D" parent="chaofisico" unique_id=1186724416]
+position = Vector2(579, 629.25)
+shape = SubResource("RectangleShape2D_8c340")
+
+[node name="meioazul" type="Sprite2D" parent="." unique_id=730919463]
+scale = Vector2(3.66875, 3.1888888)
+texture = ExtResource("4_qn35j")
+centered = false
+
+[node name="meioazul2" type="Sprite2D" parent="." unique_id=1417101165]
+position = Vector2(1174, 0)
+scale = Vector2(3.64375, 3.1888888)
+texture = ExtResource("4_qn35j")
+centered = false
+
+[node name="meiopreto" type="Sprite2D" parent="." unique_id=730216883]
+scale = Vector2(3.66875, 3.1888888)
+texture = ExtResource("5_8c340")
+centered = false
+
+[node name="meiopreto2" type="Sprite2D" parent="." unique_id=2085422762]
+position = Vector2(1174, 0)
+scale = Vector2(3.653125, 3.1888888)
+texture = ExtResource("5_8c340")
+centered = false
