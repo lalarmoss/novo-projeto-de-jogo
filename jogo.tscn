@@ -5,9 +5,91 @@
 [ext_resource type="Texture2D" uid="uid://c2r8bi4toj8c4" path="res://recursos/foreground.png" id="3_qn35j"]
 [ext_resource type="Texture2D" uid="uid://dnqbhcwos2t5o" path="res://recursos/middleground2.png" id="4_qn35j"]
 [ext_resource type="Texture2D" uid="uid://qdk8oqqq4358" path="res://recursos/middleground1.png" id="5_8c340"]
+[ext_resource type="Texture2D" uid="uid://btswwquctinn7" path="res://recursos/player.png" id="6_8c340"]
+[ext_resource type="Script" uid="uid://dxolwug1p72xq" path="res://jogador.gd" id="6_45nkh"]
+[ext_resource type="Script" uid="uid://cv3kkjv4bdvrd" path="res://gerador.gd" id="8_ysdx3"]
+[ext_resource type="FontFile" uid="uid://dlrpabx8n33vs" path="res://recursos/PressStart2P-Regular.ttf" id="9_t8pok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c340"]
 size = Vector2(1170, 107.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45nkh"]
+atlas = ExtResource("6_8c340")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysdx3"]
+atlas = ExtResource("6_8c340")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8pok"]
+atlas = ExtResource("6_8c340")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtw28"]
+atlas = ExtResource("6_8c340")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orj5g"]
+atlas = ExtResource("6_8c340")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01kpq"]
+atlas = ExtResource("6_8c340")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msvki"]
+atlas = ExtResource("6_8c340")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qew1n"]
+atlas = ExtResource("6_8c340")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_msvki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45nkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysdx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8pok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtw28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orj5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01kpq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msvki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qew1n")
+}],
+"loop": true,
+"name": &"pular",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlqx7"]
+size = Vector2(111, 149)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mtw28"]
+font = ExtResource("9_t8pok")
+font_size = 23
+shadow_size = 13
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="jogo" type="Node2D" unique_id=1243322479]
 script = ExtResource("1_yq54j")
@@ -63,3 +145,32 @@ position = Vector2(1174, 0)
 scale = Vector2(3.653125, 3.1888888)
 texture = ExtResource("5_8c340")
 centered = false
+
+[node name="jogador" type="CharacterBody2D" parent="." unique_id=1269092705]
+position = Vector2(1, -9)
+script = ExtResource("6_45nkh")
+
+[node name="imagem" type="AnimatedSprite2D" parent="jogador" unique_id=1668168813]
+texture_filter = 1
+position = Vector2(107, 534)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_msvki")
+animation = &"pular"
+frame_progress = 0.45647618
+
+[node name="corpo" type="CollisionShape2D" parent="jogador" unique_id=1124069723]
+position = Vector2(106.5, 508.5)
+shape = SubResource("RectangleShape2D_qlqx7")
+debug_color = Color(0.938375, 1.5305579e-05, 0.6261036, 0.41960785)
+
+[node name="Gerador" type="Node2D" parent="." unique_id=1739161478]
+position = Vector2(638, 570)
+script = ExtResource("8_ysdx3")
+
+[node name="Tempo" type="Label" parent="." unique_id=224057351]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 130.0
+offset_bottom = 39.0
+text = "Tempo: "
+label_settings = SubResource("LabelSettings_mtw28")
